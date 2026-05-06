@@ -2,7 +2,7 @@ from pathlib import Path
 import shutil
 
 from core.config import get_project_paths, normalizar_nome_projeto
-from app.pipeline import run_overlay_referencia
+from app.processing.pipeline import run_overlay_referencia
 
 
 def inspecionar_placa(imagem, projeto_csv, nome_projeto=None):
