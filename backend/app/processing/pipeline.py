@@ -2,12 +2,12 @@ import os
 import cv2
 import numpy as np
 
-from app.parser import carregar_componentes
-from app.mm_to_pixel import mm_para_pixel_perspectiva
-from app.align import carregar_imagem, detectar_contorno_pcb
-from app.draw import desenhar_ponto_e_label, desenhar_caixa_aproximada_matriz
+from app.processing.parser import carregar_componentes
+from app.processing.mm_to_pixel import mm_para_pixel_perspectiva
+from app.processing.align import carregar_imagem, detectar_contorno_pcb
+from app.processing.draw import desenhar_ponto_e_label, desenhar_caixa_aproximada_matriz
 from app.kicad.pcb_parser import carregar_edgecuts_pcb, extrair_bbox_edgecuts_para_csv_original
-from app.yolo_detector import aplicar_yolo_na_imagem
+from app.detectors.yolo_detector import aplicar_yolo_na_imagem
 
 
 def run_overlay_referencia(

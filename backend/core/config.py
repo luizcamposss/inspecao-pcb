@@ -14,8 +14,7 @@ KICAD_CLI = os.getenv(
 PROJETOS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def normalizar_nome_projeto(nome: str) -> str:
-    return nome.strip().lower()
+def normalizar_nome_projeto(nome: str) -> str: return nome.strip().lower()
 
 
 def get_projeto_dir(nome_projeto: str) -> Path:

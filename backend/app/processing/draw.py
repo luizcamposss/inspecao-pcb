@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from app.analyze import  verificar_presenca_componente_desvio_padrao_sem_reflexo
+from app.processing.analyze import  verificar_presenca_componente_desvio_padrao_sem_reflexo
 
 
 def desenhar_ponto_e_label(img, x_px, y_px, texto):

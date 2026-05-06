@@ -3,7 +3,7 @@ import cv2
 from ultralytics import YOLO
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[2]
 MODELS_DIR = BASE_DIR / "models"
 
 COMPONENTES_DIR = MODELS_DIR / "componentes"
