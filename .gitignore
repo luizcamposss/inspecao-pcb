@@ -1,7 +1,16 @@
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
+# Ambiente virtual
+venv/
+.venv/
+env/
 
+# Variáveis de ambiente
 .env
+
+# VS Code local
+.vscode/

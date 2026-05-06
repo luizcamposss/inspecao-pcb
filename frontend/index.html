@@ -3,68 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AOI - Inspeção de Placas</title>
+  <title>PCB Inspector</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="logo-area">[Espaço reservado para a Logo]</div>
 
-    <div class="control-group">
-      <div class="row">
-        <div class="field-group">
-          <label for="select-csv">Projeto Gabarito (CSV)</label>
-          <select id="select-csv">
-            <option value="">Carregando projetos da API...</option>
-          </select>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-text">
+        <span class="tag">PCB INSPETOR</span>
+        <h1>Inspeção automática de placas</h1>
+      </div>
+
+      <div class="panel">
+        <div class="logo-area">Sistema AOI</div>
+
+        <div class="control-group">
+          <div class="field-group">
+            <label for="select-csv">Projeto Gabarito (CSV)</label>
+            <select id="select-csv">
+              <option value="">Carregando projetos da API...</option>
+            </select>
+          </div>
+
+          <button class="btn-icon" id="btn-novo-projeto" title="Adicionar Novo Projeto">+</button>
         </div>
 
-        <button class="btn-icon" id="btn-novo-projeto" title="Adicionar Novo Projeto">+</button>
+        <div class="actions">
+          <button id="btn-usar-camera">Usar Câmera</button>
+          <button id="btn-importar-arquivo">Importar Arquivo</button>
+          <input type="file" id="hidden-file-input" accept="image/*" />
+        </div>
+
+        <button id="btn-inspecionar" class="btn-full">Inspecionar Placa</button>
+
+        <p id="loading-msg">Processando...</p>
       </div>
+    </section>
 
-      <div class="row">
-        <button id="btn-usar-camera" style="flex: 1">📷 Usar Câmera</button>
-        <button id="btn-importar-arquivo" style="flex: 1">📂 Importar Arquivo</button>
-        <input type="file" id="hidden-file-input" accept="image/*" />
-      </div>
-    </div>
-
-    <button id="btn-inspecionar" class="btn-full">🔍 Inspecionar</button>
-
-    <p id="loading-msg">Processando...</p>
-
-    <div class="images-container">
+    <section class="images-container">
       <div class="image-box">
-        <label>Foto Enviada:</label>
+        <label>Foto enviada</label>
         <div class="image-wrapper">
           <img id="img-enviada" src="" alt="Nenhuma imagem" />
-          <button class="btn-zoom" onclick="abrirZoom('img-enviada')">⛶ Ampliar</button>
+          <button class="btn-zoom" onclick="abrirZoom('img-enviada')">Ampliar</button>
         </div>
       </div>
 
       <div class="image-box">
-        <label>Resultado:</label>
+        <label>Resultado</label>
         <div class="image-wrapper">
           <img id="img-resultado" src="" alt="Aguardando inspeção" />
-          <button class="btn-zoom" onclick="abrirZoom('img-resultado')">⛶ Ampliar</button>
+          <button class="btn-zoom" onclick="abrirZoom('img-resultado')">Ampliar</button>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <div id="modal-projeto" class="modal-overlay">
     <div class="modal-content">
-      <button class="modal-close" onclick="fecharModal('modal-projeto')">✖</button>
+      <button class="modal-close" onclick="fecharModal('modal-projeto')">×</button>
 
       <h2>Novo Projeto</h2>
 
       <div class="field-group">
-        <label>Coloque um nome</label>
+        <label>Nome do projeto</label>
         <input type="text" id="nome-projeto" placeholder="Ex: Placa Fonte V3" />
       </div>
 
       <div class="field-group">
-        <label>Importe um arquivo .zip do projeto ou .kicad_pcb</label>
+        <label>Arquivo .zip ou .kicad_pcb</label>
         <input type="file" id="arquivo-projeto" accept=".zip,.kicad_pcb" />
       </div>
 
@@ -74,17 +82,17 @@
 
   <div id="modal-camera" class="modal-overlay">
     <div class="modal-content">
-      <button class="modal-close" onclick="fecharCamera()">✖</button>
+      <button class="modal-close" onclick="fecharCamera()">×</button>
 
       <h2>Tirar Foto da Placa</h2>
       <video id="video-preview" autoplay playsinline></video>
       <canvas id="canvas-capture"></canvas>
-      <button onclick="capturarFoto()">📸 Capturar</button>
+      <button onclick="capturarFoto()">Capturar</button>
     </div>
   </div>
 
   <div id="modal-zoom" class="modal-overlay zoom-overlay">
-    <button class="btn-close-zoom" onclick="fecharModal('modal-zoom')">✖</button>
+    <button class="btn-close-zoom" onclick="fecharModal('modal-zoom')">×</button>
     <img id="modal-zoom-img" src="" alt="Zoom" />
   </div>
 
