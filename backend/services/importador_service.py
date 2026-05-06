@@ -3,7 +3,7 @@ import zipfile
 import shutil
 
 from services.kicad_cli_service import converter_para_kicad, exportar_csv
-
+from services.footprint_service import gerar_csv_footprints
 from core.config import get_project_paths
 
 def criar_estrutura_projeto(nome_projeto):
@@ -163,7 +163,12 @@ def importar_projeto_universal(caminho_upload, nome_projeto):
         raise RuntimeError("Conversão falhou → PCB inválido")
 
     # 📊 gerar CSV padrão KiCad
-    exportar_csv(caminho_pcb, caminho_csv)
+    try:
+        gerar_csv_footprints(caminho_pcb, caminho_csv)
+    except Exception as erro:
+        print(f"[WARN] Falha ao gerar CSV por footprint: {erro}")
+        print("[WARN] Usando CSV padrão do kicad-cli como fallback.")
+        exportar_csv(caminho_pcb, caminho_csv)
 
     return {
         "pcb": caminho_pcb,

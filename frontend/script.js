@@ -257,3 +257,16 @@ document.getElementById("btn-inspecionar").addEventListener("click", async () =>
         document.getElementById("loading-msg").style.display = "none";
     }
 });
+
+const inputProjeto = document.getElementById("arquivo-projeto");
+const nomeArquivoProjeto = document.getElementById("arquivo-projeto-nome");
+
+if (inputProjeto && nomeArquivoProjeto) {
+    inputProjeto.addEventListener("change", () => {
+        const arquivo = inputProjeto.files?.[0];
+
+        nomeArquivoProjeto.textContent = arquivo
+            ? arquivo.name
+            : "Nenhum arquivo selecionado";
+    });
+}

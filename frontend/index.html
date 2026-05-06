@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PCB Inspector</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <main class="page">
@@ -61,22 +63,36 @@
   </main>
 
   <div id="modal-projeto" class="modal-overlay">
-    <div class="modal-content">
+    <div class="modal-content modal-projeto-card">
       <button class="modal-close" onclick="fecharModal('modal-projeto')">×</button>
 
+      <span class="modal-tag">Cadastro</span>
       <h2>Novo Projeto</h2>
+      <p class="modal-description">
+        Informe o nome do projeto e selecione o arquivo PCB para gerar a referência da inspeção.
+      </p>
 
       <div class="field-group">
-        <label>Nome do projeto</label>
+        <label for="nome-projeto">Nome do projeto</label>
         <input type="text" id="nome-projeto" placeholder="Ex: Placa Fonte V3" />
       </div>
 
       <div class="field-group">
-        <label>Arquivo .zip ou .kicad_pcb</label>
+        <label for="arquivo-projeto">Arquivo do projeto</label>
+
+        <label class="file-upload-box" for="arquivo-projeto">
+          <span class="file-upload-icon">📁</span>
+          <span>
+            <strong>Selecionar arquivo</strong>
+            <small>.zip ou .kicad_pcb</small>
+          </span>
+        </label>
+
         <input type="file" id="arquivo-projeto" accept=".zip,.kicad_pcb" />
+        <p id="arquivo-projeto-nome" class="file-name">Nenhum arquivo selecionado</p>
       </div>
 
-      <button onclick="salvarProjeto()">Salvar Projeto</button>
+      <button class="btn-save-project" onclick="salvarProjeto()">Salvar Projeto</button>
     </div>
   </div>
 
@@ -98,4 +114,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
