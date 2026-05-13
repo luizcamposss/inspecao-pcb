@@ -104,7 +104,6 @@ def importar_projeto_universal(caminho_upload, nome_projeto):
 
     shutil.copyfile(caminho_upload, caminho_original)
 
-    # ZIP ou direto
     if caminho_original.lower().endswith(".zip"):
         extrair_zip(caminho_original, estrutura["temp"])
         pasta_busca = estrutura["temp"]
@@ -123,7 +122,6 @@ def importar_projeto_universal(caminho_upload, nome_projeto):
         f"{nome_projeto}.csv"
     )
 
-    # 🔹 1 - KiCad direto
     if arquivos["kicad_pcb"]:
         origem = arquivos["kicad_pcb"][0]
 
@@ -132,7 +130,6 @@ def importar_projeto_universal(caminho_upload, nome_projeto):
 
         shutil.copyfile(origem, caminho_pcb)
 
-    # 🔹 2 - Eagle
     elif arquivos["brd"]:
         brd = arquivos["brd"][0]
 
@@ -145,24 +142,20 @@ def importar_projeto_universal(caminho_upload, nome_projeto):
 
         converter_para_kicad(brd_convert, caminho_pcb)
 
-    # 🔹 3 - Altium
     elif arquivos["pcbdoc"]:
         converter_para_kicad(arquivos["pcbdoc"][0], caminho_pcb)
 
-    # 🔹 4 - PCB genérico
     elif arquivos["pcb"]:
         converter_para_kicad(arquivos["pcb"][0], caminho_pcb)
 
     else:
         raise RuntimeError("Nenhum formato suportado encontrado")
 
-    # 🔧 pós-processamento
     reparar_kicad_pcb(caminho_pcb)
 
     if not validar_kicad_pcb(caminho_pcb):
         raise RuntimeError("Conversão falhou → PCB inválido")
 
-    # 📊 gerar CSV padrão KiCad
     try:
         gerar_csv_footprints(caminho_pcb, caminho_csv)
     except Exception as erro:

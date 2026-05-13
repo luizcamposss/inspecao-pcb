@@ -47,7 +47,6 @@ def exportar_csv(kicad_pcb_path, csv_saida):
         "--format", "csv",
         "--units", "mm",
 
-        # 🔥 ISSO É O SEGREDO
         "--use-drill-file-origin",
         "--bottom-negate-x",
 

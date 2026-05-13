@@ -37,7 +37,6 @@ def run_overlay_referencia(
         np.float32(pontos_img)
     )
 
-    # YOLO roda na imagem limpa, antes de qualquer desenho.
     detections = detectar_yolo(img)
 
     img_resultado = img.copy()
