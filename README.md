@@ -1,4 +1,4 @@
-# IHR AOI / PCB Inspector
+# AOI / PCB Inspector
 
 Sistema de inspeção automática de placas de circuito impresso, utilizando visão computacional, processamento de imagem, modelos YOLO e dados extraídos de projetos PCB.
 
@@ -8,7 +8,7 @@ O projeto permite cadastrar uma placa de referência, extrair informações do a
 
 ## Visão Geral
 
-O **IHR AOI / PCB Inspector** é uma aplicação voltada para inspeção visual automatizada de placas eletrônicas.
+O **AOI / PCB Inspector** é uma aplicação voltada para inspeção visual automatizada de placas eletrônicas.
 
 A proposta é combinar:
 
