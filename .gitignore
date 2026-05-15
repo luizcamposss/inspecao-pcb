@@ -14,3 +14,5 @@ env/
 
 # VS Code local
 .vscode/
+
+backend/data/
